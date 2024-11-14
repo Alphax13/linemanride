@@ -27,7 +27,7 @@ function Banner({ scrollToPatterns }) {
     setTimeout(() => {
       setIsModalOpen(false);
       navigate('/Linemanride');
-    }, 5000);
+    }, 3000);
   };
 
   return (
