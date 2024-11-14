@@ -1,6 +1,6 @@
 .background {
     background-color: #fff;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,8 @@
     position: relative;
     background-size: contain;
     background-position: bottom;
-    z-index: 3;
+    z-index: -1;
+    margin: 4rem 0;
 
     #sing {
         position: absolute;
@@ -117,6 +118,7 @@
         }
 
         .codeButton {
+            font-family: "LINESeedSansTH_W_XBd", sans-serif;
             width: 100%;
             padding: 10px 20px;
             font-size: 18px;

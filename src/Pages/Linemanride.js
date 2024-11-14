@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Menubar from "../Components/Menubar";
 import Bannercode from "../Components/Bannercode";
+import MyBarStore from "../Components/MyBarStore";
 
 function Code() {
 
@@ -9,7 +10,8 @@ function Code() {
     return (
         <>
             <Menubar />
-            <Bannercode/>
+            <Bannercode />
+            <MyBarStore />
         </>
     );
 }

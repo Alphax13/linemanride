@@ -15,19 +15,19 @@ function Bannercode() {
             <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอดโค้ดไปใช้ได้เลย!</p>  
             </div>
             <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEman: ECO</h2>
+                <h2 className={styles.text}>LINEMAN: ECO</h2>
                 <h2 className={styles.textinfo}>ส่วนลด 60% max to 100 THB</h2>
                 <h2 className={styles.textspan}>no minimum spend new user only</h2>
                 <button className={styles.codeButton}>LMEMYZSK7LA</button>
             </div>
             <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEman: ECO</h2>
+                <h2 className={styles.text}>LINEMAN: ECO</h2>
                 <h2 className={styles.textinfo}>ส่วนลด 25% max to 50 THB</h2>
                 <h2 className={styles.textspan}>no minimum spend</h2>
                 <button className={styles.codeButton}>LMEMYV8YVU7</button>
             </div>
             <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEman: ECO</h2>
+                <h2 className={styles.text}>LINEMAN: ECO</h2>
                 <h2 className={styles.textinfo}>ส่วนลด 30% max to 30 THB</h2>
                 <h2 className={styles.textspan}>no minimum spend new user only</h2>
                 <button className={styles.codeButton}>LMEMY3CSSY1</button>
