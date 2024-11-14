@@ -1,0 +1,11 @@
+.menubar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 25px;
+    background-image: url('../img/bar.png');
+    background-size: cover;
+    background-position: center bottom;
+    z-index: 99;
+}

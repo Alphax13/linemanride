@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "LINESeedSansTH_W_XBd";   /*Can be any text*/
+  src: local("LINESeedSansTH_W_XBd"),
+      url("./font/LINESeedSansTH_W_XBd.woff") format("truetype");
+}
+@font-face {
+  font-family: "LINESeedSansTH_W_Rg";   /*Can be any text*/
+  src: local("LINESeedSansTH_W_Rg"),
+      url("./font/LINESeedSansTH_W_Rg.woff") format("truetype");
+}
+
+
+body {
+  margin: 0;
+  font-family: 'LINESeedSansTH_W_XBd', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
