@@ -1,6 +1,6 @@
 .background {
     background-color: #fff;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +85,7 @@
     }
     .boxcode{
         margin-top: 2rem;
-        width: 80%;
+        width: 70%;
         line-height: 1.4;
 
         .text {
@@ -110,7 +110,6 @@
 
         .subtitle {
             font-size: 25px;
-            font-weight: bold;
             color: #0FC964;
             margin-top: 10px;
             margin-bottom: 40px;
@@ -118,16 +117,18 @@
         }
 
         .codeButton {
+            width: 100%;
             padding: 10px 20px;
             font-size: 18px;
-            font-weight: bold;
             color: #000;
             background-color: #ffffff;
-            border: 3px solid #00a2ff;
-            border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0, 162, 255, 0.5);
+            border: 5px solid #24B6E0;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
           }
           
           .codeButton:hover {
