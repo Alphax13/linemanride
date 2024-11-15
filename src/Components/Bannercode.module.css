@@ -8,7 +8,6 @@
     position: relative;
     background-size: contain;
     background-position: bottom;
-    z-index: -1;
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
