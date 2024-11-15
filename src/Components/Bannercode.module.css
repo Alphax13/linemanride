@@ -9,7 +9,7 @@
     background-size: contain;
     background-position: bottom;
     z-index: -1;
-    margin: 3rem 0;
+    margin: 4rem 0;
 
     #sing {
         position: absolute;
@@ -36,7 +36,6 @@
             line-height: 1.1;
             text-align: center;
             word-break: break-word;
-            margin-top: 2rem;
         }
 
         .subtitle {
