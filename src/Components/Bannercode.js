@@ -10,7 +10,7 @@ function Bannercode() {
     return (
         <div className={styles.background}>
             <div className={styles.content}>
-            <h2 className={styles.title}>คุณมีสิทธิ์ได้รับโค้ด <span className={styles.subtitle}>LINE MAN RIDE</span></h2>
+            <h2 className={styles.title}>คุณมีสิทธิ์ได้รับโค้ด <br/><span className={styles.subtitle}>LINE MAN RIDE</span></h2>
             <img  src={logo}  className={styles.logo} alt="logo 1"/>
             <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอดโค้ดไปใช้ได้เลย!</p>  
             </div>
