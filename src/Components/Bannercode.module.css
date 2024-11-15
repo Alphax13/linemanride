@@ -148,14 +148,12 @@
     transform: translateY(0);
 }
 
-/* สไตล์สำหรับปุ่มเมื่อคัดลอกสำเร็จ */
 .boxcode .codeButton.copied {
     background-color: #24B6E0;
     color: #ffffff;
     transition: all 0.3s ease;
 }
 
-/* สไตล์สำหรับข้อความแจ้งเตือนการคัดลอก */
 .boxcode .copied {
     font-family: "LINESeedSansTH_W_Rg", sans-serif;
     color: #24B6E0;
@@ -165,7 +163,6 @@
     animation: fadeIn 0.3s ease;
 }
 
-/* Animation สำหรับข้อความแจ้งเตือน */
 @keyframes fadeIn {
     from {
         opacity: 0;
