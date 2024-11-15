@@ -9,7 +9,7 @@
     background-size: contain;
     background-position: bottom;
     z-index: -1;
-    padding: 5px;
+    margin: 3rem 0;
 
     #sing {
         position: absolute;
