@@ -11,134 +11,169 @@
     z-index: -1;
     margin-top: 2rem;
     margin-bottom: 5rem;
+}
 
-    #sing {
-        position: absolute;
-        width: 50px;
-        left: 0;
-        bottom: -10%;
+#sing {
+    position: absolute;
+    width: 50px;
+    left: 0;
+    bottom: -10%;
+}
+
+#text {
+    position: absolute;
+    width: 30px;
+    right: 0;
+    bottom: -10%;
+}
+
+.content {
+    text-align: center;
+    color: #3F3F3F;
+}
+
+.content .title {
+    color: #24B6E0;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+    word-break: break-word;
+}
+
+.content .subtitle {
+    font-size: 25px;
+    font-weight: bold;
+    color: #10c157;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+}
+
+.content .pretext {
+    font-family: "LINESeedSansTH_W_Rg", sans-serif;
+}
+
+.content .playButton {
+    font-family: "LINESeedSansTH_W_XBd", sans-serif;
+    background-color: #24B6E0;
+    color: white;
+    margin-top: 3rem;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 4px 4px 0px 0px #FFFFFF;
+    transition: all 0.05s;
+}
+
+.content .playButton .icon {
+    width: 30px;
+}
+
+.content .playButton:active {
+    box-shadow: none;
+    transform: translate(4px, 4px);
+}
+
+.content .logo {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 1.5rem;
+}
+
+.boxcode {
+    margin-top: 2rem;
+    width: 70%;
+    line-height: 1.4;
+}
+
+.boxcode .text {
+    color: #0FC964;
+    font-size: 20px;
+    margin: 0;
+    word-break: break-word;
+}
+
+.boxcode .textinfo {
+    font-family: "LINESeedSansTH_W_Rg", sans-serif;
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+}
+
+.boxcode .textspan {
+    font-family: "LINESeedSansTH_W_Rg", sans-serif;
+    font-size: 10px;
+    color: #9F9F9F;
+}
+
+.boxcode .subtitle {
+    font-size: 25px;
+    color: #0FC964;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.boxcode .codeButton {
+    font-family: "LINESeedSansTH_W_XBd", sans-serif;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #000;
+    background-color: #ffffff;
+    border: 5px solid #24B6E0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transition: all 0.2s ease;
+}
+
+.boxcode .codeButton:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-2px);
+}
+
+.boxcode .codeButton:active {
+    transform: translateY(0);
+}
+
+/* สไตล์สำหรับปุ่มเมื่อคัดลอกสำเร็จ */
+.boxcode .codeButton.copied {
+    background-color: #24B6E0;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* สไตล์สำหรับข้อความแจ้งเตือนการคัดลอก */
+.boxcode .copied {
+    font-family: "LINESeedSansTH_W_Rg", sans-serif;
+    color: #24B6E0;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animation สำหรับข้อความแจ้งเตือน */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
     }
-    #text {
-        position: absolute;
-        width: 30px;
-        right: 0;
-        bottom: -10%;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .content {
-        text-align: center;
-        color: #3F3F3F;
-
-        .title {
-            color: #24B6E0;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 0;
-            line-height: 1.1;
-            text-align: center;
-            word-break: break-word;
-        }
-
-        .subtitle {
-            font-size: 25px;
-            font-weight: bold;
-            color: #10c157;
-            margin-top: 10px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: -1.5px;
-        }
-
-        .pretext{
-            font-family: "LINESeedSansTH_W_Rg", sans-serif;
-        }
-        
-        .playButton {
-            font-family: "LINESeedSansTH_W_XBd", sans-serif;
-            background-color: #24B6E0;
-            color: white;
-            margin-top: 3rem;
-            padding: 10px 50px;
-            border: none;
-            border-radius: 10px;
-            font-size: 25px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 4px 4px 0px 0px #FFFFFF;
-            transition: all 0.05s;
-
-            .icon {
-                width: 30px;
-            }
-        }
-
-        .playButton:active {
-            box-shadow: none;
-            transform: translate(4px, 4px);
-        }
-
-        .logo {
-            width: 80%;
-            margin: 0 auto;
-            display: block;
-            margin-top: 1.5rem;
-        }
-    }
-    .boxcode{
-        margin-top: 2rem;
-        width: 70%;
-        line-height: 1.4;
-
-        .text {
-            color: #0FC964;
-            font-size: 20px;
-            margin: 0;
-            word-break: break-word;
-        }
-        .textinfo{
-            font-family: "LINESeedSansTH_W_Rg", sans-serif;
-            color: #000;
-            font-size: 16px;
-            margin: 0;
-        }
-        .textspan{
-            font-family: "LINESeedSansTH_W_Rg", sans-serif;
-            font-size: 10px;
-            color: #9F9F9F;
-            
-        }
-
-        .subtitle {
-            font-size: 25px;
-            color: #0FC964;
-            margin-top: 10px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        .codeButton {
-            font-family: "LINESeedSansTH_W_XBd", sans-serif;
-            width: 100%;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: #000;
-            background-color: #ffffff;
-            border: 5px solid #24B6E0;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: auto;
-          }
-          
-          .codeButton:hover {
-            background-color: #f0f8ff;
-          }
-          
-
-    }
-    
 }
