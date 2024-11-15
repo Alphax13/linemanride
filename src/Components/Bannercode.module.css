@@ -10,19 +10,19 @@
     background-position: bottom;
     z-index: -1;
     margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 
     #sing {
         position: absolute;
         width: 50px;
         left: 0;
-        bottom: -5%;
+        bottom: -10%;
     }
     #text {
         position: absolute;
         width: 30px;
         right: 0;
-        bottom: -5%;
+        bottom: -10%;
     }
 
     .content {
