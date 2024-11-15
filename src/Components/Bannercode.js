@@ -8,6 +8,7 @@ function Bannercode() {
     const [code1, setCode1] = useState(generateCode());
     const [code2, setCode2] = useState(generateCode());
     const [code3, setCode3] = useState(generateCode());
+    const [copiedCode, setCopiedCode] = useState(null); // สถานะการคัดลอก
 
     function generateCode() {
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -15,18 +16,17 @@ function Bannercode() {
         let result = "";
         
         for (let i = 0; i < 6; i++) {
-            // เพิ่มตัวอักษร 1 ตัวและตัวเลข 1 ตัวสลับกัน
             result += letters.charAt(Math.floor(Math.random() * letters.length));
             result += numbers.charAt(Math.floor(Math.random() * numbers.length));
         }
-        return result; // จะได้โค้ดยาว 12 ตัว โดยมีตัวอักษรและตัวเลขสลับกัน
+        return result;
     }
 
     function copyCode(code) {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(code)
                 .then(() => {
-                    alert("คัดลอกโค้ดสำเร็จ!");
+                    setCopiedCode(code); // ตั้งค่าสถานะการคัดลอก
                 })
                 .catch(() => {
                     alert("ไม่สามารถคัดลอกโค้ดได้");
@@ -43,24 +43,24 @@ function Bannercode() {
                 <img src={logo} className={styles.logo} alt="logo 1"/>
                 <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอกโค้ดไปใช้ได้เลย!</p>
             </div>
-            <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEMAN: ECO</h2>
-                <h2 className={styles.textinfo}>ส่วนลด 60% max to 100 THB</h2>
-                <h2 className={styles.textspan}>no minimum spend new user only</h2>
-                <button className={styles.codeButton} onClick={() => copyCode(code1)}>{code1}</button>
-            </div>
-            <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEMAN: ECO</h2>
-                <h2 className={styles.textinfo}>ส่วนลด 25% max to 50 THB</h2>
-                <h2 className={styles.textspan}>no minimum spend</h2>
-                <button className={styles.codeButton} onClick={() => copyCode(code2)}>{code2}</button>
-            </div>
-            <div className={styles.boxcode}>
-                <h2 className={styles.text}>LINEMAN: ECO</h2>
-                <h2 className={styles.textinfo}>ส่วนลด 30% max to 30 THB</h2>
-                <h2 className={styles.textspan}>no minimum spend new user only</h2>
-                <button className={styles.codeButton} onClick={() => copyCode(code3)}>{code3}</button>
-            </div>
+
+            {[{ code: code1, discount: "60%", max: "100" },
+              { code: code2, discount: "25%", max: "50" },
+              { code: code3, discount: "30%", max: "30" }]
+              .map(({ code, discount, max }, index) => (
+                <div key={index} className={styles.boxcode}>
+                    <h2 className={styles.text}>LINEMAN: ECO</h2>
+                    <h2 className={styles.textinfo}>ส่วนลด {discount} max to {max} THB</h2>
+                    <h2 className={styles.textspan}>no minimum spend</h2>
+                    <button
+                        className={styles.codeButton}
+                        onClick={() => copyCode(code)}
+                    >
+                        {code}
+                    </button>
+                    {copiedCode === code && <span className={styles.copied}>คัดลอกโค้ดสำเร็จ!</span>}
+                </div>
+            ))}
 
             <img src={sing} alt="" id={styles.sing} />
             <img src={text} alt="" id={styles.text}/>
