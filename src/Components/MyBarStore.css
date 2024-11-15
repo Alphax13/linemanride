@@ -79,11 +79,13 @@
 
 .description {
   font-family: "LINESeedSansTH_W_Rg", sans-serif;
+  word-break: break-word;
   font-size: 16px;
   text-align: left;
-  max-width:80%;
-  margin: 5.5rem 0 0 0 ; 
+  max-width: 80%;
+  margin: 5.5rem 0 0 0;
   padding: 0;
+  white-space: pre-line;
 }
 
 .glow-button {

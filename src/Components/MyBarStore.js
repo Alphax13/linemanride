@@ -23,9 +23,11 @@ const MyBarStore = () => {
             <img src={mylogo} alt="Logo" className="mylogo" />
 
             <p className="description">
-            มาเล่นเกมและลุ้นรับ COINS แลกไอเทมสุดพรีเมียมที่ไม่เหมือนใคร
-            ไปกับ MY BAR STORE
+              มาเล่นเกมและลุ้นรับ COINS<br />
+              แลกไอเทมสุดพรีเมียมที่ไม่เหมือนใคร
+              ไปกับ MY BAR STORE
             </p>
+
 
             <div class="button-container">
                 <button class="glow-button">TAP TO START</button>
