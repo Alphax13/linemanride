@@ -14,16 +14,26 @@ function Bannercode() {
         const numbers = "0123456789";
         let result = "";
         
-        for (let i = 0; i < 12; i++) {
-            result += i < 10 ? letters.charAt(Math.floor(Math.random() * letters.length)) : numbers.charAt(Math.floor(Math.random() * numbers.length));
+        for (let i = 0; i < 6; i++) {
+            // เพิ่มตัวอักษร 1 ตัวและตัวเลข 1 ตัวสลับกัน
+            result += letters.charAt(Math.floor(Math.random() * letters.length));
+            result += numbers.charAt(Math.floor(Math.random() * numbers.length));
         }
-        return result;
+        return result; // จะได้โค้ดยาว 12 ตัว โดยมีตัวอักษรและตัวเลขสลับกัน
     }
 
     function copyCode(code) {
-        navigator.clipboard.writeText(code).then(() => {
-            alert("คัดลอกโค้ดสำเร็จ!");
-        });
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    alert("คัดลอกโค้ดสำเร็จ!");
+                })
+                .catch(() => {
+                    alert("ไม่สามารถคัดลอกโค้ดได้");
+                });
+        } else {
+            alert("เบราว์เซอร์ของคุณไม่รองรับการคัดลอกไปยังคลิปบอร์ด");
+        }
     }
 
     return (
