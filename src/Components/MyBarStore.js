@@ -28,10 +28,13 @@ const MyBarStore = () => {
               ไปกับ MY BAR STORE
             </p>
 
-
-            <div class="button-container">
-                <button class="glow-button">TAP TO START</button>
+            <div className="button-container">
+              <button className="glow-button"
+                onClick={() => window.location.href = 'https://myworld-virtual-store.com/mybarstorys'}>
+                TAP TO START
+              </button>
             </div>
+
 
           <img src={mrbar} alt="Avatar" className="avatar" />
         </div>
@@ -41,12 +44,17 @@ const MyBarStore = () => {
         <div className="button-item">
           <img src={vr} alt="Virtual Website" />
           <h2>Virtual Website</h2>
-          <img src={en} alt="btn"/>
+          <img src={en} alt="btn"
+            onClick={() => window.location.href = 'https://myworld-virtual-store.com'}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
         <div className="button-item">
           <img src={product} alt="Exchange Coins" />
           <h2>แลก COINES</h2>
-          <img src={th} alt="btn"/>
+          <img src={th} alt="btn" 
+            onClick={() => window.location.href = 'https://myworld-virtual-store.com/point'}
+            style={{ cursor: 'pointer' }}/>
         </div>
       </div>
     </div>

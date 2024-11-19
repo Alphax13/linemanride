@@ -5,7 +5,7 @@ import logo from '../img/logo.png';
 import sing from '../img/sing.png';
 import text from '../img/text.png';
 
-function Banner({ scrollToPatterns }) {
+function Banner() {
   const [phone, setPhone] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
