@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import { useDispatch , useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from './Bannercode.module.css';
 import logo from '../img/logo.png';
 import sing from '../img/sing.png';
 import text from '../img/text.png';
 
-function Bannercode() {
+function Bannercode({ response }) {
+    const { profile,response, isLoading, error  } = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!profile || !response) {
+            navigate("/");
+        }
+    }, [profile, response, navigate]);
+
     const generateCode = () => {
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const numbers = "0123456789";
@@ -17,9 +28,9 @@ function Bannercode() {
     };
 
     const [codes] = useState([
-        { code: generateCode(), discount: "60%", max: "100" },
-        { code: generateCode(), discount: "25%", max: "50" },
-        { code: generateCode(), discount: "30%", max: "30" }
+        { code: response?.code_100 || "ไม่มีโค้ด", discount: "60%", max: "100" },
+        { code: response?.code_50 || "ไม่มีโค้ด", discount: "25%", max: "50" },
+        { code: response?.code_bike || "ไม่มีโค้ด", discount: "30%", max: "30" }
     ]);
 
     const [copiedStates, setCopiedStates] = useState({});

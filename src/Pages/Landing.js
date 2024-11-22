@@ -4,8 +4,6 @@ import Banner from "../Components/Banner";
 
 function Landing() {
 
-    
-
     return (
         <>
             <Menubar />
