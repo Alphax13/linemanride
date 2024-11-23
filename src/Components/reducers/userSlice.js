@@ -35,7 +35,7 @@ export const loginWithLine = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       if (isDesktop()) {
-        await liff.init({ liffId: "" });
+        await liff.init({ liffId: "2002643017-rN6bKJvZ" });
 
         if (!liff.isLoggedIn()) {
           liff.login();
@@ -53,7 +53,7 @@ export const loginWithLine = createAsyncThunk(
         return;
       }
 
-      await liff.init({ liffId: "" });
+      await liff.init({ liffId: "2002643017-rN6bKJvZ" });
 
       if (!liff.isLoggedIn()) {
         liff.login();
