@@ -5,52 +5,99 @@ import liff from "@line/liff";
 const baseurlDev = 'https://games.myworld-store.com/api-code-dev';
 const baseurl = 'https://games.myworld-store.com/api-code';
 
-// Thunk สำหรับการ Login LINE และดึงข้อมูลโปรไฟล์
+//endpoint
+const collectUrl = `${baseurlDev}/collectCode`;
+
+function mobileCheck() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const isMobile = /(android|bb\d+|meego|iphone|ipad|ipod|webos|blackberry|iemobile|opera mini)/i.test(userAgent);
+  const hasRedirected = sessionStorage.getItem("mobileRedirected");
+
+  if (isMobile && !hasRedirected) {
+    sessionStorage.setItem("mobileRedirected", "true");
+    return true;
+  }
+
+  return false;
+}
+
+function isDesktop() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return (
+    userAgent.indexOf("windows") !== -1 ||
+    userAgent.indexOf("macintosh") !== -1 ||
+    userAgent.indexOf("linux") !== -1
+  );
+}
+
 export const loginWithLine = createAsyncThunk(
-  'user/loginWithLine',
+  "user/loginWithLine",
   async (_, { rejectWithValue }) => {
     try {
-      await liff.init({ liffId: '2002643017-rN6bKJvZ' }); // ใส่ LIFF ID
-      if (!liff.isLoggedIn()) {
-        liff.login(); // Redirect ไปยังหน้า Login ของ LINE
+      // ตรวจสอบว่ากำลังทำงานบน Desktop หรือ Mobile
+      if (isDesktop()) {
+        await liff.init({ liffId: "2002643017-rN6bKJvZ" });
+
+        if (!liff.isLoggedIn()) {
+          liff.login(); // Redirect ไปที่หน้า Login
+          return; // หยุดการทำงานหลัง Redirect
+        }
+        const profile = await liff.getProfile();
+        return profile;
       }
+
+      // สำหรับ Mobile: ตรวจสอบ `redirected`
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirected = urlParams.get("redirected");
+
+      if (mobileCheck() && !redirected) {
+        window.location.href = "line://app/2002643017-rN6bKJvZ?redirected=true";
+        return; // หยุดการทำงานหลัง Redirect
+      }
+
+      await liff.init({ liffId: "2002643017-rN6bKJvZ" });
+
+      if (!liff.isLoggedIn()) {
+        liff.login(); // Redirect ไปที่หน้า Login
+        return;
+      }
+
       const profile = await liff.getProfile();
-      return profile; // คืนค่า profile
+      return profile;
+
     } catch (error) {
-      return rejectWithValue(
-        error.message || 'Failed to login with LINE'
-      );
+      return rejectWithValue(error.message || "Failed to login with LINE");
     }
   }
 );
 
+
+
 export const collectCode = createAsyncThunk(
   'user/collectCode',
   async ({ profile, phone }, { rejectWithValue }) => {
-    console.log("Sending request to API with data:", { profile, phone });
+    // console.log("Sending request to API with data:", { profile, phone });
     try {
-      const response = await axios.post(
-        `${baseurlDev}/collectCode`,
+      const response = await axios.post(collectUrl,
         {
           name: profile.displayName,
           phone: phone,
-          line_id: profile.userId,
+          line_id: profile.userId + '1',
           picture: profile.pictureUrl,
         },
         {
           headers: {
             'Content-Type': 'application/json',
             'X-API-KEY': 'Sw9bxBY01ZgxXOCHK_ycKh6nwuTM0018W3E83iZbNpY',
+            // 'ngrok-skip-browser-warning':true
           },
         }
       );
-      console.log("API response:", response.data);
+      // console.log("API response:", response.data);
       return response.data;
     } catch (error) {
-      console.error("Error occurred:", error.response || error.message);
-      return rejectWithValue(
-        error.response?.data?.message || error.message || 'Failed to collect code'
-      );
+      // console.error("Error occurred:", error.response || error.message);
+      return rejectWithValue(error.response ? error.response.data : error.message);
     }
   }
 );
@@ -58,6 +105,7 @@ export const collectCode = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState: {
+    users: [],
     profile: null,
     isLoading: false,
     error: null,
@@ -83,9 +131,7 @@ const userSlice = createSlice({
       .addCase(loginWithLine.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
-
-    builder
+      })
       .addCase(collectCode.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -96,7 +142,11 @@ const userSlice = createSlice({
       })
       .addCase(collectCode.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        if (action.payload?.code === "ALREADY_REDEEM_TODAY") {
+          state.response = action.payload;
+        } else {
+          state.error = action.payload;
+        }
       });
   },
 });

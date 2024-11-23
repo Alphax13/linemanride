@@ -7,7 +7,7 @@ import sing from '../img/sing.png';
 import text from '../img/text.png';
 
 function Bannercode({ response }) {
-    const { profile,response, isLoading, error  } = useSelector((state) => state.user);
+    const { profile, isLoading, error  } = useSelector((state) => state.user);
     const navigate = useNavigate();
 
     useEffect(() => {

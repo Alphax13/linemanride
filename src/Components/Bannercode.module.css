@@ -53,6 +53,8 @@
 
 .content .pretext {
     font-family: "LINESeedSansTH_W_Rg", sans-serif;
+    color: red;
+    font-weight: 600;
 }
 
 .content .playButton {
