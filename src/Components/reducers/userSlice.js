@@ -34,31 +34,29 @@ export const loginWithLine = createAsyncThunk(
   "user/loginWithLine",
   async (_, { rejectWithValue }) => {
     try {
-      // ตรวจสอบว่ากำลังทำงานบน Desktop หรือ Mobile
       if (isDesktop()) {
-        await liff.init({ liffId: "2002643017-rN6bKJvZ" });
+        await liff.init({ liffId: "" });
 
         if (!liff.isLoggedIn()) {
-          liff.login(); // Redirect ไปที่หน้า Login
-          return; // หยุดการทำงานหลัง Redirect
+          liff.login();
+          return;
         }
         const profile = await liff.getProfile();
         return profile;
       }
 
-      // สำหรับ Mobile: ตรวจสอบ `redirected`
       const urlParams = new URLSearchParams(window.location.search);
       const redirected = urlParams.get("redirected");
 
       if (mobileCheck() && !redirected) {
         window.location.href = "line://app/2002643017-rN6bKJvZ?redirected=true";
-        return; // หยุดการทำงานหลัง Redirect
+        return;
       }
 
-      await liff.init({ liffId: "2002643017-rN6bKJvZ" });
+      await liff.init({ liffId: "" });
 
       if (!liff.isLoggedIn()) {
-        liff.login(); // Redirect ไปที่หน้า Login
+        liff.login();
         return;
       }
 

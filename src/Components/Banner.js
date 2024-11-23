@@ -14,14 +14,14 @@ function Banner() {
   const { profile, response, isLoading, error } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!profile && !isLoading) {
+    if (!profile) {
       dispatch(loginWithLine());
     }
   
     if (profile) {
       sessionStorage.removeItem("mobileRedirected");
     }
-  }, [dispatch, profile, isLoading]);
+  }, [dispatch, profile]);
   
 
   const [phone, setPhone] = useState("");
@@ -61,7 +61,6 @@ function Banner() {
         setIsAlreadyRedeemedOpen(true); // เปิด Modal สำหรับ "ALREADY_REDEEM_TODAY"
         return;
       }
-  
       setTimeout(() => {
         setIsModalOpen(false);
         navigate("/Linemanride", { state: { response } });
@@ -69,7 +68,7 @@ function Banner() {
     }
   }, [response, navigate]);
   
-  if (isLoading) {
+  if (!profile) {
     return (
       <div className={styles.modal}>
         <div className={styles.modalContent}>
