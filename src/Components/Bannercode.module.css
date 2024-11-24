@@ -42,13 +42,9 @@
 }
 
 .content .subtitle {
-    font-size: 25px;
-    font-weight: bold;
-    color: #10c157;
-    margin-top: 10px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: -1.5px;
+    width: 200px; /* กำหนดความกว้าง */
+    height: auto; /* ให้ปรับความสูงอัตโนมัติให้เหมาะสม */
+    object-fit: contain; /* ปรับขนาดรูปให้พอดีโดยรักษาอัตราส่วน */
 }
 
 .content .pretext {

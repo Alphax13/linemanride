@@ -5,6 +5,7 @@ import styles from './Bannercode.module.css';
 import logo from '../img/logo.png';
 import sing from '../img/sing.png';
 import text from '../img/text.png';
+import line from '../img/line.png';
 
 function Bannercode({ response }) {
     const { profile, isLoading, error  } = useSelector((state) => state.user);
@@ -74,7 +75,7 @@ function Bannercode({ response }) {
             <div className={styles.content}>
                 <h2 className={styles.title}>
                     คุณมีสิทธิ์ได้รับโค้ด <br/>
-                    <span className={styles.subtitle}>LINE MAN RIDE</span>
+                    <img src={line} className={styles.subtitle} alt="LINE MAN RIDE" />
                 </h2>
                 <img src={logo} className={styles.logo} alt="logo 1"/>
                 <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอกโค้ดไปใช้ได้เลย!</p>
