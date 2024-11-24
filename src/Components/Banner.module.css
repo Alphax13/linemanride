@@ -44,14 +44,14 @@
 }
 
 .subtitle {
-    font-size: 25px;
-    font-weight: bold;
-    color: #10c157;
-    margin-top: 10px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: -1.5px;
-}
+    width: 100px; /* กำหนดความกว้าง */
+    height: auto; /* ให้ปรับความสูงอัตโนมัติให้เหมาะสม */
+    /* หรือใช้ max-width แทน */
+    max-width: 100px; /* กำหนดขนาดสูงสุดของรูป */
+    max-height: 100px; /* กำหนดความสูงสูงสุด */
+    object-fit: contain; /* ปรับขนาดรูปให้พอดีโดยรักษาอัตราส่วน */
+  }
+  
 
 .pretext {
     font-family: "LINESeedSansTH_W_Rg", sans-serif;
