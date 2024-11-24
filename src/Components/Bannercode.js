@@ -99,6 +99,14 @@ function Bannercode({ response }) {
                     )}
                 </div>
             ))}
+            <p className={styles.pretext}>
+                หมายเหตุ :
+                <ul>
+                    <li>โค้ดส่วนลดจะเด้งขึ้นมาเพียง 1 ครั้ง หลังปิดหน้าจอจะไม่สามารถนำกลับมาใช้ได้อีก</li>
+                    <li>กรุณาบันทึกหน้าจอหรือคัดลอกไปใช้โค้ดได้ทันที</li>
+                    <li>โค้ดสามารถใช้งานได้ถึง วันที่ 31 มกราคม 2568</li>
+                </ul>
+            </p>
 
             <img src={sing} alt="" id={styles.sing} />
             <img src={text} alt="" id={styles.text}/>
