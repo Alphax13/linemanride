@@ -86,8 +86,7 @@ function Banner() {
           ลงทะเบียนรับโค้ด <span className={styles.subtitle}>LINE MAN RIDE</span>
         </h2>
         <img src={logo} className={styles.logo} alt="logo 1" />
-        <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอดโค้ดไปใช้ได้เลย!</p>
-
+        
         <h2 className={styles.text}>กรุณากรอกเบอร์โทร</h2>
         <div>
           <input
