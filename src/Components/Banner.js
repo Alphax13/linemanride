@@ -79,7 +79,7 @@ function Banner() {
     <div className={styles.background}>
       <div className={styles.content}>
         <h2 className={styles.title}>
-          ลงทะเบียนรับโค้ด <span className={styles.subtitle}>LINE MAN RIDE</span>
+          ลงทะเบียนรับโค้ด <img src={line} className={styles.subtitle} alt="LINE MAN RIDE" />
         </h2>
         <img src={logo} className={styles.logo} alt="logo 1" />
         <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอดโค้ดไปใช้ได้เลย!</p>
