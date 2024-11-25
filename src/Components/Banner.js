@@ -6,7 +6,6 @@ import styles from './Banner.module.css';
 import logo from '../img/logo.png';
 import sing from '../img/sing.png';
 import text from '../img/text.png';
-import line from '../img/line.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,10 +16,6 @@ function Banner() {
   useEffect(() => {
     if (!profile) {
       dispatch(loginWithLine());
-    }
-  
-    if (profile) {
-      sessionStorage.removeItem("mobileRedirected");
     }
   }, [dispatch, profile]);
   
@@ -84,10 +79,11 @@ function Banner() {
     <div className={styles.background}>
       <div className={styles.content}>
         <h2 className={styles.title}>
-        ลงทะเบียนรับโค้ด <img src={line} className={styles.subtitle} alt="LINE MAN RIDE" />
+          ลงทะเบียนรับโค้ด <span className={styles.subtitle}>LINE MAN RIDE</span>
         </h2>
         <img src={logo} className={styles.logo} alt="logo 1" />
-        
+        <p className={styles.pretext}>กรุณาแคปหน้าจอ หรือ คัดลอดโค้ดไปใช้ได้เลย!</p>
+
         <h2 className={styles.text}>กรุณากรอกเบอร์โทร</h2>
         <div>
           <input

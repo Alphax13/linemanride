@@ -34,17 +34,6 @@ export const loginWithLine = createAsyncThunk(
   "user/loginWithLine",
   async (_, { rejectWithValue }) => {
     try {
-      if (isDesktop()) {
-        await liff.init({ liffId: "2002643017-rN6bKJvZ" });
-
-        if (!liff.isLoggedIn()) {
-          liff.login();
-          return;
-        }
-        const profile = await liff.getProfile();
-        return profile;
-      }
-
       const urlParams = new URLSearchParams(window.location.search);
       const redirected = urlParams.get("redirected");
 
@@ -61,9 +50,12 @@ export const loginWithLine = createAsyncThunk(
       }
 
       const profile = await liff.getProfile();
+      console.log("Profile retrieved:", profile);
+      
       return profile;
 
     } catch (error) {
+      console.error("Login error:", error);
       return rejectWithValue(error.message || "Failed to login with LINE");
     }
   }
@@ -85,11 +77,9 @@ export const collectCode = createAsyncThunk(
           headers: {
             'Content-Type': 'application/json',
             'X-API-KEY': 'Sw9bxBY01ZgxXOCHK_ycKh6nwuTM0018W3E83iZbNpY',
-            // 'ngrok-skip-browser-warning':true
           },
         }
       );
-      // console.log("API response:", response.data);
       return response.data;
     } catch (error) {
       // console.error("Error occurred:", error.response || error.message);
@@ -116,21 +106,19 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginWithLine.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(loginWithLine.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.profile = action.payload;
+        console.log("Action payload on success:", action.payload);
+        if (action.payload) {
+          state.isLoading = false;
+          state.profile = action.payload;
+        } else {
+          state.isLoading = false;
+          state.error = "Profile is undefined";
+        }
       })
       .addCase(loginWithLine.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
-      .addCase(collectCode.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
       })
       .addCase(collectCode.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -139,6 +127,8 @@ const userSlice = createSlice({
       .addCase(collectCode.rejected, (state, action) => {
         state.isLoading = false;
         if (action.payload?.code === "ALREADY_REDEEM_TODAY") {
+          state.response = action.payload;
+        } else if(action.payload?.code === "CODE_OUT_OF_STOCK") {
           state.response = action.payload;
         } else {
           state.error = action.payload;
