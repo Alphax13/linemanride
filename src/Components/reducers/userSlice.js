@@ -6,7 +6,7 @@ const baseurlDev = 'https://games.myworld-store.com/api-code-dev';
 const baseurl = 'https://games.myworld-store.com/api-code';
 
 //endpoint
-const collectUrl = `${baseurlDev}/collectCode`;
+const collectUrl = `${baseurl}/collectCode`;
 
 function mobileCheck() {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
