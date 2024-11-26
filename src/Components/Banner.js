@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { collectCode, loginWithLine } from "./reducers/userSlice";
 import { useNavigate } from "react-router-dom";
 import styles from './Banner.module.css';
+import line from '../img/line.png';
 import logo from '../img/logo.png';
 import sing from '../img/sing.png';
 import text from '../img/text.png';
@@ -18,7 +19,6 @@ function Banner() {
       dispatch(loginWithLine());
     }
   }, [dispatch, profile]);
-  
 
   const [phone, setPhone] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +41,7 @@ function Banner() {
 
     if (!profile) {
       setIsModalOpen(false);
-      alert("โปรดเข้าสู่ระบบผ่าน Line ก่อนทำรายการ");
+      console.log("โปรดเข้าสู่ระบบผ่าน Line ก่อนทำรายการ");
       return;
     }
 
