@@ -99,7 +99,7 @@ function Bannercode({ response }) {
                     )}
                 </div>
             ))}
-            <p className={styles.pretext}>
+            <p className={styles.pretexts}>
                 หมายเหตุ :
                 <ul>
                     <li>โค้ดส่วนลดจะเด้งขึ้นมาเพียง 1 ครั้ง หลังจากปิดหน้าจอจะไม่สามารถกลับมาหน้าเดิมได้อีก</li>
